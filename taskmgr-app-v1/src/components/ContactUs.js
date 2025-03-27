@@ -10,7 +10,7 @@ function ContactUs() {
                 <br/>
                 <span>Email: </span><input type="text" maxlength={100} placeholder="* Email"/>                
                 <p></p>
-                <button>Submit</button> {" "} <a href="#">clear</a>
+                <button>Submit</button> {" "} <a href="#">Clear</a>
             </div>
         </form>
       </>
