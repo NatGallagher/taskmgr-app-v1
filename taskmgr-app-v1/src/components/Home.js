@@ -1,7 +1,7 @@
 function Home() {
     return (
       <>
-        <h2>Task Manager App v1.1</h2>
+        <h2>Task Manager App v1.2</h2>
       </>
     );
   }
