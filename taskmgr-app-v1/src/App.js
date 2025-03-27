@@ -1,9 +1,9 @@
-
+import Home from "./components/Home"
 
 function App() {
   return (
     <>
-      <h2>Task Manager App v1.0</h2>
+      <Home/>
     </>
   );
 }
