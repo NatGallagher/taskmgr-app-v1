@@ -5,7 +5,7 @@ function Home() {
   useEffect(() => {
 
     console.log("Home page load")
-  },[])
+  },[])//[] - run only 1 time
     return (
       <>
         <h2>Task Manager App v1.5</h2>
