@@ -22,7 +22,8 @@ function Home() {
   const [msgText,setMsg] = useState("")
   
   const handleAddNewItem = (e) =>{
-    e.preventDefault();
+    e.preventDefault(); //prefent event ie: onclick from continuing 
+    //allow on 1 click on current event
       
       if(txtitem === null ||  txtitem.trim().length === 0)
       {
@@ -47,6 +48,23 @@ function Home() {
       setItem("");                     
       
    }
+
+   function handleDelete(e, id){
+
+    e.preventDefault()
+
+    //if(!("delete item?")){
+      //return false;
+    //}
+
+    //array.findIndex 
+    //tmplist.splice(foundindex,1)
+    //todolist.splice(foundindex,1)
+
+    setMsg(`# item deleted ${id}`)
+
+   }
+
 
   /* useEffect(function) - ananymous function, callback, arraw fuction */
   //useEffect(function(){})
@@ -95,7 +113,7 @@ function Home() {
                     {" "}
                     <span>{item.name}</span>
                     {" "}
-                   <button>x</button>
+                    <button onClick={handleDelete(item.id)}>x</button>
                 </>}
               </p>)}
           </div>
