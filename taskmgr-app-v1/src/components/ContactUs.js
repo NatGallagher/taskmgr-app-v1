@@ -10,6 +10,9 @@ function ContactUs() {
                 <br/>
                 <span>Email: </span><input type="text" maxlength={100} placeholder="* Email"/>                
                 <p></p>
+                <span>Comments: </span><br/>
+                <textarea name="message" cols="30" rows="10" placeholder="* Message" required></textarea><br/>
+                <p></p>
                 <button>Submit</button> {" "} <a href="#">Clear</a>
             </div>
         </form>

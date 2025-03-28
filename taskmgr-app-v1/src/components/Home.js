@@ -10,7 +10,17 @@ function Home() {
             {" "} <button>Add</button> {" "} <a>Clear</a>
             <p></p>
         </div>
-        <Link to="/contact">Contact US</Link>
+        <p></p>
+        <a href="#/0">all</a> {" | "}
+        <a href="#/1">complete</a> {" | "}
+        <a href="#/2">incomplete</a>
+        <p></p>
+        <div>
+          <span>[] itema -x-</span><br/>
+          <span>[x] itemb -x-</span><br/>
+          <span>[] itemc -x-</span><br/>
+          <span>[x] itemd -x-</span>
+        </div>
       </>
     );
   }
