@@ -20,6 +20,7 @@ function Home() {
     console.log("Home page load")
 
     setTodoList(tmplist)// calling this everytime the page loads
+    console.log("--- tmplist\n", tmplist);
     console.log("--- todolist\n", todolist);
 
 
