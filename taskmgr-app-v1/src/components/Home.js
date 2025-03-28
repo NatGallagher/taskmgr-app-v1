@@ -1,6 +1,11 @@
-import {Link} from "react-router-dom"
+import {useEffect} from "react"
 
 function Home() {
+
+  useEffect(() => {
+
+    console.log("Home page load")
+  },[])
     return (
       <>
         <h2>Task Manager App v1.5</h2>
