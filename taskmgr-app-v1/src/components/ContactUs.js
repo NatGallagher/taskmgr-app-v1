@@ -1,4 +1,8 @@
 function ContactUs() {
+  useEffect(() => {
+
+    console.log("ContactUs page load")
+  },[])//[] - run only 1 time
     return (
       <>
         <h2>Contact Us</h2>
