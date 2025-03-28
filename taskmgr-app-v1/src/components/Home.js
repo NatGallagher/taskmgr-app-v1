@@ -1,6 +1,19 @@
-import {useEffect} from "react"
+import {useEffect, useState} from "react"
+
+const initial_todo_items = [
+  {id:1,name:"item one", completed:false},
+  {id:2,name:"item two", completed:false},
+  {id:3,name:"item three", completed:true},
+  {id:4,name:"item four", completed:false},
+  {id:5,name:"item five", completed:false}
+];
 
 function Home() {
+
+  //useState = used to update and track data changes
+
+  const [tmplist, setTmpList] = useState(initial_todo_items);
+  const [todolist, setTodoList] = useState(null);
 
   useEffect(() => {
 
