@@ -22,8 +22,7 @@ function Home() {
   const [msgText,setMsg] = useState("")
   
   const handleAddNewItem = (e) =>{
-    e.preventDefault(); //prefent event ie: onclick from continuing 
-    //allow on 1 click on current event
+    e.preventDefault();
       
       if(txtitem === null ||  txtitem.trim().length === 0)
       {
@@ -46,25 +45,42 @@ function Home() {
 
       setMsg("# item added");
       setItem("");                     
-      
+
    }
 
    function handleDelete(e, id){
 
-    e.preventDefault()
+    e.preventDefault() //previent ie: onclick from continuing / bubling 
+    //allow on 1 click on current event
+    //onclick would refresh page 
+    //used in form buttons events
 
-    //if(!("delete item?")){
-      //return false;
-    //}
+    if(!window.confirm("delete item?")){
+      return false;
+    }
 
-    //array.findIndex 
-    //tmplist.splice(foundindex,1)
-    //todolist.splice(foundindex,1)
+    setTmpList((prevval)=>{
+      const _lst = [...prevval]
+      
+      const _index = _lst.findIndex((item)=>{
+        if (item.id == id)
+        {
+          return true;
+        }
+      })
+
+      if(_index>0)
+      {
+        _lst.splice(_index,1)
+      }
+
+      setTodoList((prevval)=>[..._lst]);    
+      return _lst;
+    });
 
     setMsg(`# item deleted ${id}`)
 
    }
-
 
   /* useEffect(function) - ananymous function, callback, arraw fuction */
   //useEffect(function(){})
@@ -86,7 +102,7 @@ function Home() {
 
   return (
       <>
-      <div className="app-center-page"> 
+      <div className="app-center-page">  
           <h3>Demo Task Manager App v1.0.6</h3>
           <p></p>
           <div>
@@ -98,13 +114,13 @@ function Home() {
               <p></p>
           </div>
           <p>{msgText}</p>
-          <p></p>
+          <br/>
           <div>
-          <a>all</a> {" | "}
-          <a>complete</a> {" | "}
-          <a>in-complete</a> 
+            <a>all</a> {" | "}
+            <a>complete</a> {" | "}
+            <a>in-complete</a> 
           </div>
-          <p></p>
+          <br/>
           <div>
               {todolist && todolist.map((item)=>
               <p key={item.id}>{
@@ -113,7 +129,7 @@ function Home() {
                     {" "}
                     <span>{item.name}</span>
                     {" "}
-                    <button onClick={handleDelete(item.id)}>x</button>
+                   <button onClick={(e)=>handleDelete(e,item.id)}>x</button>
                 </>}
               </p>)}
           </div>
