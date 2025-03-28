@@ -11,9 +11,9 @@ function Home() {
             <p></p>
         </div>
         <p></p>
-        <a href="#/0">all</a> {" | "}
-        <a href="#/1">complete</a> {" | "}
-        <a href="#/2">incomplete</a>
+        <a>all</a> {" | "}
+        <a>complete</a> {" | "}
+        <a>incomplete</a>
         <p></p>
         <div>
           <span>[] itema -x-</span><br/>
