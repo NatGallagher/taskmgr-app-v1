@@ -81,9 +81,11 @@ function Home() {
           </div>
           <p>{msgText}</p>
           <p></p>
+          <div>
           <a>all</a> {" | "}
           <a>complete</a> {" | "}
           <a>in-complete</a> 
+          </div>
           <p></p>
           <div>
               {todolist && todolist.map((item)=>
