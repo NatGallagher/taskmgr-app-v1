@@ -18,6 +18,11 @@ function Home() {
   useEffect(() => {
 
     console.log("Home page load")
+
+    setTodoList(tmplist)// calling this everytime the page loads
+    console.log("--- todolist\n", todolist);
+
+
   },[])//[] - run only 1 time
     return (
       <>
