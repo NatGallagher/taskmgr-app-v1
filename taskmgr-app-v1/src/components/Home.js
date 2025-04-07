@@ -69,7 +69,7 @@ function Home() {
         }
       })
 
-      if(_index>0)
+      if(_index !=-1)
       {
         _lst.splice(_index,1)
       }
@@ -82,6 +82,63 @@ function Home() {
 
    }
 
+   
+
+   const handleAll = (e) => {
+
+    e.preventDefault();
+
+    const filteredlist = tmplist;
+      
+    setTodoList(filteredlist);
+  }
+
+   const handleComplete = (e) => {
+
+    e.preventDefault();
+
+    const filteredlist = tmplist.filter((item)=>{
+        return item.completed
+    })
+
+    setTodoList(filteredlist);
+  }
+
+   const handleIncomplete = (e) => {
+
+      e.preventDefault();
+  
+      const filteredlist = tmplist.filter((item)=>{
+          return !item.completed
+      })
+
+      setTodoList(filteredlist);
+  }
+
+  const handleItemToggle = (e, id) => {
+
+
+          let _lst1 = tmplist.map((item)=>{
+              return   (item.id == id)?                  
+                    {...item,completed:!item.completed}
+                :
+                    {...item};                
+            });
+
+            let _lst2 = todolist.map((item)=>{
+              return   (item.id == id)?                  
+                    {...item,completed:!item.completed}
+                :
+                    {...item};                
+            });
+
+          setTmpList(_lst1);
+          setTodoList(_lst2);
+
+          setItem("");
+
+  }
+
   /* useEffect(function) - ananymous function, callback, arraw fuction */
   //useEffect(function(){})
   //useEffect(()=>{
@@ -90,7 +147,9 @@ function Home() {
 
     console.log("#App::Home page load")
     
-    setTodoList(tmplist)
+    //setTodoList(tmplist)
+    //or -- spread operator -- append/include latest data 
+    setTodoList([...tmplist])
     console.log("---tmplist\n",tmplist)
     console.log("---todolist\n",todolist)
 
@@ -110,24 +169,24 @@ function Home() {
                        onChange={(e)=>setItem(e.target.value)}
                        maxLength={25} placeholder="* add item"/>
               {" "} 
-              <button onClick={handleAddNewItem}>Add</button> {" "} <a>clear</a>
+              <button onClick={handleAddNewItem}>Add</button> {" "} <a href="#" onClick={()=> {setItem(""); setMsg("")}}>clear</a>
               <p></p>
           </div>
           <p>{msgText}</p>
           <br/>
           <div>
-            <a>all</a> {" | "}
-            <a>complete</a> {" | "}
-            <a>in-complete</a> 
+            <a href="#" onClick={handleAll}>all</a> {" | "}
+            <a href="#" onClick={handleComplete}>complete</a> {" | "}
+            <a href="#" onClick={handleIncomplete}>in-complete</a> 
           </div>
           <br/>
           <div>
               {todolist && todolist.map((item)=>
               <p key={item.id}>{
                 <>
-                   <input type="checkbox" checked={item.completed}/>
+                   <input onChange={(e)=>handleItemToggle(e,item.id)} type="checkbox" checked={item.completed}/>{" "}
                     {" "}
-                    <span>{item.name}</span>
+                    <span key={item.id} style={{'text-decoration':(item.completed)?"line-through":""}}>{item.name}</span>                    
                     {" "}
                    <button onClick={(e)=>handleDelete(e,item.id)}>x</button>
                 </>}
